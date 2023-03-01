@@ -20,13 +20,18 @@ const Hotkey = function(node,modifiers,char,func){
     const setModikyIsDown = () => {
         let modikeyIsDown = []
         this.modifiers.forEach(modifier => {
-            modikeyIsDown[modifier] = false
+            modikeyIsDown.push(
+                {
+                    keyString:modifier,
+                    isDown:false
+                }
+            )
         })
         return modikeyIsDown
     }
 
     const handleNodeKeydown = (e) => {
-        if(this.modikeyIsDown.every(x => x) == false){
+        if(this.modikeyIsDown.every(modi => modi.isDown) == false){
             return
         }
 
@@ -41,15 +46,19 @@ const Hotkey = function(node,modifiers,char,func){
     }
 
     const handleDocumentKeydown = (e) => {
-        if(this.modikeyIsDown[e.key] != undefined){
-            this.modikeyIsDown[e.key] = true
+        let index = this.modikeyIsDown.findIndex(modi => modi.keyString == e.key )
+        if(index == -1){
+            return
         }
+        this.modikeyIsDown[index].isDown = true
     }
 
     const handleDocumentKeyup = (e) => {
-        if(this.modikeyIsDown[e.key] != undefined){
-            this.modikeyIsDown[e.key] = false
+        let index = this.modikeyIsDown.findIndex(modi => modi.keyString == e.key )
+        if(index == -1){
+            return
         }
+        this.modikeyIsDown[index].isDown = false
     }
 
     this.start = function(){
