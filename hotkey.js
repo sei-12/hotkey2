@@ -1,27 +1,29 @@
 class Hotkeys{
-    static modifier = {
-        ctrl:"",
-        shift:"",
-        alt:"",
-        cmd:""
-    }
-
-    constructor(){
+    static start(hotkeys){
 
     }
 
-    add(){
+    static stop(hotkeys){
 
     }
+}
 
-    remove(){
+class Modifier{
+    static Ctrl  = ""
+    static Shift = ""
+    static Alt   = ""
+    static Cmd   = ""
+}
 
-    }
-
-    start(){
+class Hotkey{
+    constructor(node,modifiers,char,func){
 
     }
     
+    start(){
+
+    }
+
     stop(){
 
     }
