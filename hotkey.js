@@ -7,7 +7,21 @@ class Modifier{
 }
 
 class Modifiers{
-    static keys = ["Control","Shift","Alt","Meta"]
+    static equal(A,B){
+        if(A.Alt != B.Alt){
+            return false
+        }
+        if(A.Cmd != B.Cmd){
+            return false
+        }
+        if(A.Ctrl != B.Ctrl){
+            return false
+        }
+        if(A.Shift != B.Shift){
+            return false
+        }
+        return true
+    }
     static fromKeyStrings(keyStrings){
         let alt,shift,cmd,ctrl
         if(keyStrings.includes(Modifier.Alt)){
@@ -50,21 +64,8 @@ class Modifiers{
 
 const Hotkey = function(node,modifiers,char,func){
 
-    const setModikyIsDown = () => {
-        let modikeyIsDown = []
-        this.modifiers.forEach(modifier => {
-            modikeyIsDown.push(
-                {
-                    keyString:modifier,
-                    isDown:false
-                }
-            )
-        })
-        return modikeyIsDown
-    }
-
     const handleNodeKeydown = (e) => {
-        if(this.modikeyIsDown.every(modi => modi.isDown) == false){
+        if(Modifiers.equal(this.modifiers,this.isDown) == false){
             return
         }
 
