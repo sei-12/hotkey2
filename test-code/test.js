@@ -24,6 +24,9 @@ let hotkeys = [
     
     new Hotkey(document,[Modifier.Cmd,Modifier.Ctrl],"n",obj.aaa),
     new Hotkey(document,[Modifier.Cmd,Modifier.Ctrl],"n",()=>{console.log("document Cmd Ctrl n")}),
+
+    new Hotkey(document,[Modifier.Cmd,Modifier.Ctrl],"1",()=>{console.log("document Cmd Ctrl 1")}),
+    new Hotkey(document,[Modifier.Cmd,Modifier.Ctrl],"0",()=>{console.log("document Cmd Ctrl 0")}),
 ]
 
 
