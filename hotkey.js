@@ -1,12 +1,3 @@
-class Hotkeys{
-    static start(hotkeys){
-        hotkeys.forEach(hotkey => hotkey.start())
-    }
-
-    static stop(hotkeys){
-        hotkeys.forEach(hotkey => hotkey.stop())
-    }
-}
 
 class Modifier{
     static Ctrl  = "Control"

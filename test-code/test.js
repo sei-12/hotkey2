@@ -7,4 +7,4 @@ let hotkeys = [
     new Hotkey(inputText,[Modifier.Cmd],"u",()=>{console.log("inputText Cmd y")}),
 ]
 
-Hotkeys.start(hotkeys)
+hotkeys.forEach( hotkey => hotkey.start())
