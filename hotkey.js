@@ -79,32 +79,20 @@ const Hotkey = function(node,modifiers,char,func){
         }
     }
 
-    const handleDocumentKeydown = (e) => {
-        let index = this.modikeyIsDown.findIndex(modi => modi.keyString == e.key )
-        if(index == -1){
-            return
-        }
-        this.modikeyIsDown[index].isDown = true
-    }
-
-    const handleDocumentKeyup = (e) => {
-        let index = this.modikeyIsDown.findIndex(modi => modi.keyString == e.key )
-        if(index == -1){
-            return
-        }
-        this.modikeyIsDown[index].isDown = false
+    const handleModikey = (e) => {
+        this.isDown.change(e.key,e.type == "keydown")
     }
 
     this.start = function(){
         this.node.addEventListener("keydown",handleNodeKeydown)
-        document.addEventListener("keydown",handleDocumentKeydown)
-        document.addEventListener("keyup",handleDocumentKeyup)
+        document.addEventListener("keydown",handleModikey)
+        document.addEventListener("keyup",handleModikey)
     }
 
     this.stop = function(){
         this.node.removeEventListener("keydown",handleNodeKeydown)
-        document.removeEventListener("keydown",handleDocumentKeydown)
-        document.removeEventListener("keyup",handleDocumentKeyup)
+        document.removeEventListener("keydown",handleModikey)
+        document.removeEventListener("keyup",handleModikey)
     }
 
     this.node = node
