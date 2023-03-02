@@ -6,6 +6,48 @@ class Modifier{
     static Cmd   = "Meta"
 }
 
+class Modifiers{
+    static keys = ["Control","Shift","Alt","Meta"]
+    static fromKeyStrings(keyStrings){
+        let alt,shift,cmd,ctrl
+        if(keyStrings.includes(Modifier.Alt)){
+            alt = true
+        }
+        if(keyStrings.includes(Modifier.Cmd)){
+            cmd = true
+        }
+        if(keyStrings.includes(Modifier.Ctrl)){
+            ctrl = true
+        }
+        if(keyStrings.includes(Modifier.Shift)){
+            shift = true
+        }
+        return new Modifiers(alt,ctrl,cmd,shift)
+    }
+
+    constructor(alt,ctrl,cmd,shift){
+        this.Alt = alt
+        this.Ctrl = ctrl
+        this.Cmd = cmd
+        this.Shift = shift
+    }
+
+    change(eDotKey,bool){
+        if(eDotKey == Modifier.Alt){
+            this.Alt = bool
+        }
+        else if(eDotKey == Modifier.Cmd){
+            this.Cmd = bool
+        }
+        else if(eDotKey == Modifier.Ctrl){
+            this.Ctrl = bool
+        }
+        else if(eDotKey == Modifier.Shift){
+            this.Shift = bool
+        }
+    }
+}
+
 const Hotkey = function(node,modifiers,char,func){
 
     const setModikyIsDown = () => {
