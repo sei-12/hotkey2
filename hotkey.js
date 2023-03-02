@@ -2,7 +2,7 @@
 class Modifier{
     static Ctrl  = "Control"
     static Shift = "Shift"
-    static Alt   = ""
+    static Alt   = "Alt"
     static Cmd   = "Meta"
 }
 
