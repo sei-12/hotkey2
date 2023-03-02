@@ -22,8 +22,13 @@ class Modifiers{
         }
         return true
     }
+
     static fromKeyStrings(keyStrings){
-        let alt,shift,cmd,ctrl
+        let alt = false
+        let cmd = false
+        let ctrl = false
+        let shift = false
+
         if(keyStrings.includes(Modifier.Alt)){
             alt = true
         }
@@ -62,6 +67,7 @@ class Modifiers{
     }
 }
 
+
 const Hotkey = function(node,modifiers,char,func){
 
     const handleNodeKeydown = (e) => {
@@ -69,7 +75,7 @@ const Hotkey = function(node,modifiers,char,func){
             return
         }
 
-        if(this.modifiers.includes(Modifier.Shift)){
+        if(this.modifiers.Shift){
             // シフトの場合の処理を反映
             // a -> A
         }
@@ -96,10 +102,10 @@ const Hotkey = function(node,modifiers,char,func){
     }
 
     this.node = node
-    this.modifiers = modifiers
+    this.modifiers = Modifiers.fromKeyStrings(modifiers)
     this.char = char
     this.func = func
 
-    this.modikeyIsDown = setModikyIsDown()
+    this.isDown = new Modifiers(false,false,false,false)
 }
 
