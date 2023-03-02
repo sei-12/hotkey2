@@ -75,14 +75,16 @@ const Hotkey = function(node,modifiers,char,func){
             return
         }
 
-        if(this.modifiers.Shift){
-            // シフトの場合の処理を反映
-            // a -> A
-        }
-        
         if(e.key == this.char){
             this.func()
         }
+    }
+
+    const setChar = (char) => {
+        if(this.modifiers.Shift){
+            char = char.toLowerCase()
+        }
+        return char
     }
 
     const handleModikey = (e) => {
@@ -103,7 +105,7 @@ const Hotkey = function(node,modifiers,char,func){
 
     this.node = node
     this.modifiers = Modifiers.fromKeyStrings(modifiers)
-    this.char = char
+    this.char = setChar(char)
     this.func = func
 
     this.isDown = new Modifiers(false,false,false,false)
